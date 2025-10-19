@@ -1,9 +1,10 @@
+
 /* ---------- Reset & Variables ---------- */
 :root {
   --primary-color: #000;
   --text-color: #222;
   --muted-color: #666;
-  --bg-gradient: linear-gradient(135deg, #f6f8f9 0%, #ffffff 100%);
+  --bg-gradient: linear-gradient(135deg, #b7b9ba 100%, #ffffff 100%);
   --panel-bg: rgba(255, 255, 255, 0.75);
   --glass-blur: 8px;
 }
@@ -1118,98 +1119,152 @@ nav a[aria-current="page"] {
     margin-bottom: 20px;
   }
 }
-.contact {
-  padding: 80px 20px;
-  background: #f0f4f8;
-  text-align: center;
+.contact-modern {
+  display: flex;
+  width: fit-content;
+  flex-direction: row;
+  margin: auto;
+  align-items: center;
+  color: #1a1a1a;
+  padding: 100px 10%;
+  gap: 50px;
+  flex-wrap: wrap;
   position: relative;
   overflow: hidden;
+  animation: fadeIn 1.2s ease forwards;
 }
 
-.contact h2 {
-  font-size: 2.5rem;
-  margin-bottom: 10px;
-  color: #222;
+/* LEFT SECTION */
+.contact-left h1 {
+  line-height: 1.1;
+  display: flex;
+  flex-direction: column;
+}
+
+.font1 {
+  font-family: 'Dancing Script', cursive;
+  font-weight: 400;
+  font-size: 3.8rem;
+  color: #111;
+}
+
+.font2 {
+  font-family: 'Dancing Script', cursive;
+  font-weight: 600;
+  font-size: 4.2rem;
+  color: #9a4b7a;
+  letter-spacing: 1px;
+  transform: translateX(5px);
+  transition: color 0.3s ease;
+}
+
+.font2:hover {
+  color: #7c2f5d;
+}
+
+.font3 {
+  font-family: 'Chewy', cursive;
+  font-weight: 600;
+  font-size: 3.6rem;
+  color: #333;
   position: relative;
-  display: inline-block;
-  animation: fadeInUp 0.8s ease forwards;
 }
 
-.contact h2::after {
+.font3::after {
   content: '';
-  display: block;
-  width: 60px;
-  height: 3px;
-  background: #000;
-  margin: 10px auto 0;
-  border-radius: 2px;
+  position: absolute;
+  bottom: 5px;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: #111;
   transform: scaleX(0);
-  animation: underline 1s forwards 0.5s;
+  transform-origin: left;
+  transition: transform 0.6s ease;
 }
 
-.contact p {
-  font-size: 1.1rem;
-  color: #555;
-  margin-bottom: 40px;
-  animation: fadeInUp 0.8s ease forwards 0.3s;
-  opacity: 0;
+.contact-left h1:hover .font3::after {
+  transform: scaleX(1);
 }
 
-.contact-links {
+.contact-left p {
+  margin-top: 20px;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #444;
+  font-family: 'Ms Madi', cursive;
+}
+
+/* RIGHT SECTION */
+.contact-right {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-}
-
-.contact-links a {
-  display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 10px;
-  text-decoration: none;
+}
+
+.socials {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+
+}
+.socials a{
+    text-decoration: none;
+
+}
+
+.social-circle {
+  width: 60px;
+  height: 60px;
   background: #fff;
-  color: #222;
-  font-weight: 500;
-  padding: 12px 20px;
-  border-radius: 12px;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.05);
-  transition: all 0.3s;
-  opacity: 0;
-  transform: translateY(30px);
-  animation: fadeInUp 0.8s forwards;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  border: 2px solid #111;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  font-size: 1.8rem;
+  color: #111;
+  transition: all 0.3s ease;
 }
 
-.contact-links a:nth-child(1) { animation-delay: 0.6s; }
-.contact-links a:nth-child(2) { animation-delay: 0.8s; }
-.contact-links a:nth-child(3) { animation-delay: 1s; }
-.contact-links a:nth-child(4) { animation-delay: 1.2s; }
-
-.contact-links a:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 25px rgba(0,0,0,0.12);
+.social-circle:hover {
+  background: #000000;
+  color: #fff;
+  transform: translateY(-5px) scale(1.1);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
 }
 
-.contact-links i {
-  font-size: 1.3rem;
-  color: #000;
+/* ANIMATION */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-/* Animations */
-@keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes underline {
-  to { transform: scaleX(1); }
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .contact-links {
+/* RESPONSIVE */
+@media (max-width: 950px) {
+  .contact-modern {
     flex-direction: column;
-    gap: 15px;
+    text-align: center;
+    gap: 50px;
+  }
+
+  .font1, .font2, .font3 {
+    font-size: 2.8rem;
+  }
+
+  .contact-left p {
+    font-size: 1.6rem;
+  }
+
+  .socials {
+    flex-direction: row;
+    gap: 20px;
+  }
+
+  .social-circle {
+    width: 55px;
+    height: 55px;
+    font-size: 1.6rem;
   }
 }
